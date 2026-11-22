@@ -17,9 +17,9 @@
 <section class="scan" aria-label="扫码下载"><img src="./download-qr.png" alt="手机扫码进入德扑 GTO 陪练下载页" width="144" height="144"><div><h2>手机扫码下载</h2><p class="muted">iPhone / Android</p><p class="muted">手机上可直接使用下方下载按钮。</p></div></section>
 <section class="cards" aria-label="下载方式">
 <article class="card"><span class="tag">iPhone · 正式版</span><div class="platform"><img src="./app-icon.webp" alt="" width="40" height="40"><h2>App Store 下载</h2></div><p>需要应用已上架地区的 Apple 账号。中国大陆区账号可能无法下载。</p><a class="action" href="https://apps.apple.com/app/id6828434360" rel="noopener noreferrer">前往 App Store</a><span class="muted">商店正式版功能可能与安卓测试版不同。</span></article>
-<article class="card"><span class="tag">Android · 独立测试版</span><div class="platform"><img src="./app-icon.webp" alt="" width="40" height="40"><h2>APK 下载安装</h2></div><p>包含练习、推演、记录图片分享。测试版可与原版并存，会员操作为模拟，不会扣款。</p><p class="muted" id="file-info">正在检查测试包…</p><a class="action" id="android-download" hidden download>下载安卓测试版</a><div class="unavailable" id="android-status" role="status">正在检查测试包…</div><span class="muted">联网推演依赖测试服务在线；这是测试包，尚未完成安卓真机验收。</span></article>
+<article class="card"><span class="tag">Android</span><div class="platform"><img src="./app-icon.webp" alt="" width="40" height="40"><h2>APK 下载安装</h2></div><p>包含练习、推演和记录图片分享。会员将通过会员码激活，购买事宜可在 App 内联系开发者。</p><p class="muted" id="file-info">正在检查测试包…</p><a class="action" id="android-download" hidden download>下载安卓版</a><div class="unavailable" id="android-status" role="status">正在检查测试包…</div><span class="muted">会员码服务完成验证后开放下载。</span></article>
 </section>
-<section class="steps"><h2>安卓安装方法</h2><ol><li>点击“下载安卓测试版”，下载完成后打开 APK。</li><li>如果系统提示，按提示允许当前浏览器安装应用，再完成安装。</li><li>打开“德扑陪练·测试版”，先测试练习、推演和分享图片。</li></ol><p class="muted">如果在微信中无法下载或打开 APK，请使用右上角菜单选择在浏览器中打开本页。请保留现有应用，无需卸载旧版。</p><details id="integrity" hidden><summary>查看安装包校验信息</summary><p class="muted">SHA-256</p><code id="sha"></code></details></section>
+<section class="steps"><h2>安卓安装方法</h2><ol><li>点击“下载安卓版”，下载完成后打开 APK。</li><li>如果系统提示，按提示允许当前浏览器安装应用，再完成安装。</li><li>打开“德扑 GTO 陪练”，先测试练习、推演和分享图片。</li></ol><p class="muted">如果在微信中无法下载或打开 APK，请使用右上角菜单选择在浏览器中打开本页。请保留现有应用，无需卸载旧版。</p><details id="integrity" hidden><summary>查看安装包校验信息</summary><p class="muted">SHA-256</p><code id="sha"></code></details></section>
 <footer>模拟学习用途，筹码无现金价值。<br><a href="../privacy.html">隐私政策</a> · <a href="../support.html">支持与反馈</a></footer>
 </main><script>
 (async()=>{
@@ -35,6 +35,6 @@
   link.href=url.href;link.hidden=false;status.hidden=true;
   info.textContent=`版本 ${file.version} · 构建 ${file.build}\n${(file.bytes/1024/1024).toFixed(1)} MB · Android ${file.minimumAndroid} 及以上 · ${file.architectures}`;
   document.getElementById('sha').textContent=file.sha256;document.getElementById('integrity').hidden=false;
- }catch{info.textContent='';status.textContent='安卓测试包暂未开放下载';}
+ }catch{info.textContent='';status.textContent='安卓版更新中，稍后开放下载';}
 })();
 </script></body></html>
