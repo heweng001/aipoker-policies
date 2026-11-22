@@ -6,5 +6,5 @@
   "minimumAndroid": "7.0",
   "architectures": "arm64-v8a / x86_64",
   "ready": true,
-  "url": "https://github.com/heweng001/aipoker-policies/releases/download/untagged-e3e465b970ed67fec318/gto-poker-preview-2026112201.apk"
+  "url": "https://github.com/heweng001/aipoker-policies/releases/download/android-preview-2026112201/gto-poker-preview-2026112201.apk"
 }
