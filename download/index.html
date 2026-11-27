@@ -27,7 +27,7 @@
 <article class="card" id="iphone"><div class="platform"><img src="./app-icon.webp" alt="" width="40" height="40"><h2>iPhone 版</h2></div><p>目前仅支持海外 App Store 下载。</p><figure class="platform-qr"><img src="./iphone-qr.png" alt="扫码前往 App Store 下载 iPhone 版" width="144" height="144"><figcaption>扫码前往 App Store</figcaption></figure><p class="muted" aria-hidden="true"></p><a class="action" href="https://apps.apple.com/app/id6828434360" rel="noopener noreferrer">前往 App Store</a></article>
 <article class="card" id="android"><div class="platform"><img src="./app-icon.webp" alt="" width="40" height="40"><h2>Android 版</h2></div><p>下载 APK 安装。微信内请用浏览器打开。</p><figure class="platform-qr"><img src="./android-qr.png" alt="扫码打开安卓下载页" width="144" height="144"><figcaption>扫码下载安卓版</figcaption></figure><p class="muted" id="file-info">正在检查安装包…</p><div><a class="action" id="android-download" hidden download>下载安卓版</a><div class="unavailable" id="android-status" role="status">正在检查安装包…</div></div></article>
 </section>
-<section class="help" aria-label="安装与帮助"><details><summary>安卓安装方法</summary><ol><li>点击“下载安卓版”，下载完成后打开 APK。</li><li>按系统提示允许当前浏览器安装应用，再完成安装。</li><li>打开“德扑 GTO 陪练”，开始体验。</li></ol><p>更新时无需卸载现有应用。</p></details><details id="integrity" hidden><summary>安装包校验信息</summary><p>SHA-256</p><code id="sha"></code></details><p>安装遇到问题？<a href="mailto:hewen@maoniunet.com?subject=%E5%AE%89%E8%A3%85%E5%B8%AE%E5%8A%A9">联系开发者</a></p></section>
+<section class="help" aria-label="安装与帮助"><details><summary>安卓安装方法</summary><ol><li>点击“下载安卓版”，下载完成后打开 APK。</li><li>按系统提示允许当前浏览器安装应用，再完成安装。</li><li>打开“德扑 GTO 陪练”，开始体验。</li></ol><p>更新时无需卸载现有应用。</p></details><details id="integrity" hidden><summary>安装包校验信息</summary><p>SHA-256</p><code id="sha"></code></details><p><a id="android-fallback" hidden>备用下载（GitHub）</a></p><p>安装遇到问题？<a href="mailto:hewen@maoniunet.com?subject=%E5%AE%89%E8%A3%85%E5%B8%AE%E5%8A%A9">联系开发者</a></p></section>
 <footer>界面数据为示例。策略与称号仅供学习参考，模拟积分无现金价值。<br><a href="../privacy.html">隐私政策</a> · <a href="../support.html">支持与反馈</a></footer>
 </main><script>
 (()=>{
@@ -49,11 +49,15 @@
   const response=await fetch(document.querySelector('meta[name="aipoker-download-manifest"]').content,{cache:'no-store'});if(!response.ok)throw new Error('unavailable');
   const file=await response.json();
   if(file.ready!==true||!/^\d+$/.test(String(file.build))||!/^\d+\.\d+\.\d+$/.test(file.version)||!Number.isSafeInteger(file.bytes)||file.bytes<=0||!/^[a-f0-9]{64}$/.test(file.sha256))throw new Error('unavailable');
-  const url=new URL(file.url,location.href);
+  const url=new URL(file.url,response.url);
   const local=url.origin===location.origin;
   const release=url.protocol==='https:'&&url.hostname==='github.com'&&url.pathname.includes('/releases/download/');
   if((!local&&!release)||!url.pathname.endsWith('.apk')||url.username||url.password)throw new Error('unavailable');
   link.href=url.href;link.hidden=false;status.hidden=true;
+  if(file.fallbackUrl){
+   const fallback=new URL(file.fallbackUrl,response.url);
+   if(fallback.protocol==='https:'&&fallback.hostname==='github.com'&&fallback.pathname.startsWith('/heweng001/aipoker-policies/releases/download/')&&fallback.pathname.endsWith('.apk')&&!fallback.username&&!fallback.password){const alternative=document.getElementById('android-fallback');alternative.href=fallback.href;alternative.hidden=false;}
+  }
   let downloadPending=false;
   link.addEventListener('click',event=>{
    if(downloadPending){event.preventDefault();return;}
