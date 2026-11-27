@@ -1,3 +1,10 @@
 {
-  "ready": false
+  "version": "1.0.5",
+  "build": "2026112301",
+  "bytes": 71711614,
+  "sha256": "954b63dac5ce54fcad27a7e7a908662e7893c89ff1113c3a2a1bd7ab2222e6aa",
+  "minimumAndroid": "7.0",
+  "architectures": "arm64-v8a / x86_64",
+  "ready": true,
+  "url": "https://github.com/heweng001/aipoker-policies/releases/download/android-2026112301/gto-poker-1.0.5-2026112301.apk"
 }
